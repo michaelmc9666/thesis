@@ -3,6 +3,7 @@
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras import layers, models
+from dbnomics import fetch_series
 import matplotlib.pyplot as plt
 import yfinance as yf
 import pandas as pd
@@ -10,6 +11,20 @@ import pandas as pd
 
 from windowshap import StationaryWindowSHAP
 
+
+def fetch_macro(series_id: str, value_col: str ="value") -> pd.Series:
+    """
+    Returns a 1D (1 value per timestamp) panda data series
+
+    - 1D series: 1 column of numbers over time (time is index)
+    - each macro indicator is a separate 1D series
+    """
+    df = fetch_series(series_id)                        # dbnomics returns a dataframe
+    df = df[["period", value_col]].copy()               # keep only date + value
+    df["period"] = pd.to_datetime(df["period"])         # convert string -> datetime
+    df = df.dropna(subset=[value_col])                  # drop missing values
+    df = df.sort_values("period").set_index("period")   # sort, then set datetime as index
+    return df[value_col].rename(series_id)              # return as series named by id
 
 
 def make_real_series(ticker, start, end, price_col):
@@ -156,6 +171,43 @@ def main():
         end="2026-01-01",
         price_col="Adj Close"
     )
+
+    # this is a dbnomics test before I actually use it
+    #------------------------------------------------------------
+    series_id_1 = "FED/H15/RIFLGFCM03_N.B"    # provider/dataset/series_code
+    # us treasury constant maturity (nominal) yield
+    # 3 month maturity, business-day freq.
+
+    series_id_2 = "FED/H15/RIFLGFCY01_N.B"  # provider/dataset/series_code
+    # us treasury constant maturity (nominal) yield
+    # 1 year maturity, business-day freq.
+
+    series_id_3 = "FED/H15/RIFLGFCY02_N.B"  # provider/dataset/series_code
+    # us treasury constant maturity (nominal) yield
+    # 2 year maturity, business-day freq.
+
+
+    tcmnom_3m = fetch_macro(series_id_1)
+    tcmnom_1y = fetch_macro(series_id_2)
+    tcmnom_2y = fetch_macro(series_id_3)
+
+    print("\ntcmnom 3 months\n")
+    print(tcmnom_3m.name)       # confirms which series was pulled
+    print(tcmnom_3m.index[:3])  # dates
+    print(tcmnom_3m.head())     # first values
+
+    print("\ntcmnom 1 year\n")
+    print(tcmnom_1y.name)  # confirms which series was pulled
+    print(tcmnom_1y.index[:3])  # dates
+    print(tcmnom_1y.head())  # first values
+
+    print("\ntcmnom 2 years\n")
+    print(tcmnom_2y.name)  # confirms which series was pulled
+    print(tcmnom_2y.index[:3])  # dates
+    print(tcmnom_2y.head())  # first values
+
+    # ------------------------------------------------------------
+
 
     # normalize inputs (convert raw price/volume to roughly N(0,1))
     price_mean, price_std = prices.mean(), prices.std()
