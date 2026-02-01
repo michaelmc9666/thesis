@@ -4,26 +4,45 @@ import numpy as np
 import tensorflow as tf
 from tensorflow.keras import layers, models
 import matplotlib.pyplot as plt
+import yfinance as yf
+import pandas as pd
+
 
 from windowshap import StationaryWindowSHAP
 
 
 
-def make_synthetic_series(T_long=10000, seed=0):
-    """One long financial-like series: price + volume."""
-    rng = np.random.default_rng(seed)   # makes random number generator object
+def make_real_series(ticker, start, end, price_col):
+    """
+    Downloads real market data and returns:
+      - series: (T, 2) numpy array with [price, volume]
+      - prices: (T,) numpy array
+      - vol:    (T,) numpy array
+    This matches the shape your synthetic code expects.
+    """
 
-    # random-walk log returns
-    returns = rng.normal(loc=0.0003, scale=0.01, size=T_long)  # (T_long,) - slight upward bias, slight wiggle around avg
-    prices = 100 * np.exp(np.cumsum(returns))                  # (T_long,)
-    # now we have a fake price series following a random walk with drift
+    # download OHLCV from Yahoo Finance
+    px = yf.download(
+        ticker,                 # which stock
+        start=start,             # start date (inclusive)
+        end=end,                 # end date (exclusive)
+        auto_adjust=False,       # keep Adj Close column
+        progress=False
+    )
 
-    # volume correlated with volatility
-    # 1e6 base volume level, increase volume when returns are large, w/ random noise
-    vol = 1e6 + 2e5 * np.abs(returns) + rng.normal(scale=5e4, size=T_long)
+    # keep only what we need, and drop any missing rows
+    px = px[[price_col, "Volume"]].dropna()
 
-    series = np.stack([prices, vol], axis=-1)  # stacks prices & volume together - (T_long, 2)
-    return series, returns
+    # extract 1D arrays (T,), squeeze() forces arrays to be 1D
+    prices = px[price_col].to_numpy(dtype=float).squeeze()
+    vol = px["Volume"].to_numpy(dtype=float).squeeze()
+
+
+    # stack into (T, 2) where column0=price, column1=volume
+    series = np.stack((prices, vol), axis=-1)
+
+    return series, prices, vol
+
 
 
 def build_window_dataset(series_norm, lookback=300):
@@ -89,7 +108,7 @@ def plot_price_volume(prices, vol, max_steps=500):
     fig, axs = plt.subplots(2, 1, sharex=True, figsize=(10, 6))
     axs[0].plot(t, prices[:max_steps])
     axs[0].set_ylabel("Price")
-    axs[0].set_title("Synthetic Price and Volume (first 500 steps)")
+    axs[0].set_title("Real Price and Volume (first 500 steps)")
     axs[1].plot(t, vol[:max_steps])
     axs[1].set_ylabel("Volume")
     axs[1].set_xlabel("Time step")
@@ -130,10 +149,13 @@ def plot_windowshap(ts_phi, window_index=0):
 def main():
     print(">>> starting main()")
 
-    # 1) make long synthetic series
-    series, returns = make_synthetic_series(T_long=10000)
-    prices = series[:, 0]  # extract 1D price array from (T_long, 2)
-    vol = series[:, 1]     # extract 1D volume array
+    # 1) make long REAL series (price + volume)
+    series, prices, vol = make_real_series(
+        ticker="AAPL",
+        start="2015-01-01",
+        end="2026-01-01",
+        price_col="Adj Close"
+    )
 
     # normalize inputs (convert raw price/volume to roughly N(0,1))
     price_mean, price_std = prices.mean(), prices.std()
