@@ -44,6 +44,8 @@ def make_real_series(ticker, start, end, price_col):
         auto_adjust=False,       # keep Adj Close column
         progress=False
     )
+    # fixes keyerror
+    px.columns = px.columns.get_level_values(0)
 
     # keep only what we need, and drop any missing rows
     px = px[[price_col, "Volume"]].dropna()
@@ -56,7 +58,7 @@ def make_real_series(ticker, start, end, price_col):
     # stack into (T, 2) where column0=price, column1=volume
     series = np.stack((prices, vol), axis=-1)
 
-    return series, prices, vol
+    return px, series, prices, vol
 
 
 
@@ -165,7 +167,7 @@ def main():
     print(">>> starting main()")
 
     # 1) make long REAL series (price + volume)
-    series, prices, vol = make_real_series(
+    stock_df, series, prices, vol = make_real_series(
         ticker="AAPL",
         start="2015-01-01",
         end="2026-01-01",
@@ -191,32 +193,55 @@ def main():
     tcmnom_1y = fetch_macro(series_id_2)
     tcmnom_2y = fetch_macro(series_id_3)
 
-    print("\ntcmnom 3 months\n")
-    print(tcmnom_3m.name)       # confirms which series was pulled
-    print(tcmnom_3m.index[:3])  # dates
-    print(tcmnom_3m.head())     # first values
-
-    print("\ntcmnom 1 year\n")
-    print(tcmnom_1y.name)  # confirms which series was pulled
-    print(tcmnom_1y.index[:3])  # dates
-    print(tcmnom_1y.head())  # first values
-
-    print("\ntcmnom 2 years\n")
-    print(tcmnom_2y.name)  # confirms which series was pulled
-    print(tcmnom_2y.index[:3])  # dates
-    print(tcmnom_2y.head())  # first values
-
     # ------------------------------------------------------------
 
+    # join macro data onto the stock DataFrame
+    #   'how="left"' ensures we keep the stock market's daily index (trading days)
+    df_merged = stock_df.join([tcmnom_3m, tcmnom_1y, tcmnom_2y], how="left")
 
-    # normalize inputs (convert raw price/volume to roughly N(0,1))
-    price_mean, price_std = prices.mean(), prices.std()
-    vol_mean, vol_std = vol.mean(), vol.std()
 
-    prices_norm = (prices - price_mean) / price_std
-    vol_norm = (vol - vol_mean) / vol_std
-    # stack normalized price + volume back into 2D array (time, features)
-    series_norm = np.stack([prices_norm, vol_norm], axis=-1)  # (T_long, 2)
+    # forward fill (ffill)
+    #   If stock data exists for Tuesday, but the macro number came out Monday,
+    #   this propagates Monday's macro value to Tuesday
+    df_merged = df_merged.ffill()
+
+    # drop remaining NaNs
+    #   (ex. if stock data starts before the first macro data point)
+    df_merged = df_merged.dropna()
+
+    print("\nAligned Data Head:\n", df_merged.head())
+    print("\nAligned Data Shape:", df_merged.shape)
+
+    # ------------------------------------------------------------
+    # RE-EXTRACT NUMPY ARRAYS FROM MERGED DATA
+    # ------------------------------------------------------------
+
+    # Extract aligned columns back into numpy arrays
+    prices_aligned = df_merged["Adj Close"].to_numpy(dtype=float)
+    vol_aligned = df_merged["Volume"].to_numpy(dtype=float)
+
+    # Extract the macro columns using their ID names
+    macro_1 = df_merged[series_id_1].to_numpy(dtype=float)
+    macro_2 = df_merged[series_id_2].to_numpy(dtype=float)
+    macro_3 = df_merged[series_id_3].to_numpy(dtype=float)
+
+    # Normalize everything (Z-score normalization)
+    price_mean, price_std = prices_aligned.mean(), prices_aligned.std()
+    vol_mean, vol_std = vol_aligned.mean(), vol_aligned.std()
+
+    prices_norm = (prices_aligned - prices_aligned.mean()) / prices_aligned.std()
+    vol_norm = (vol_aligned - vol_aligned.mean()) / vol_aligned.std()
+
+    m1_norm = (macro_1 - macro_1.mean()) / macro_1.std()
+    m2_norm = (macro_2 - macro_2.mean()) / macro_2.std()
+    m3_norm = (macro_3 - macro_3.mean()) / macro_3.std()
+
+    # Stack into a single 2D array (Time, Features)
+    # The new shape will be (T_aligned, 5) instead of (T, 2)
+    series_norm = np.stack(
+        [prices_norm, vol_norm, m1_norm, m2_norm, m3_norm],
+        axis=-1
+    )
 
     # plot raw (unnormalized) price/volume just to see the synthetic data
     plot_price_volume(prices, vol, max_steps=500)
@@ -251,11 +276,13 @@ def main():
     # plot true vs predicted last prices for a slice of the test windows
     plot_price_predictions(true_last_prices, pred_last_prices, max_plot=200)
 
+    """
     # 6) WindowSHAP: explain which timesteps/features matter for a few test windows
     ts_phi = run_windowshap(model, X_train, X_test, window_len=10)
     plot_windowshap(ts_phi, window_index=0)
 
     print(">>> finished main()")
+    """
 
 
 if __name__ == "__main__":
