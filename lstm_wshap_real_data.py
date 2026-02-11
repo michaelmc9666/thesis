@@ -5,6 +5,7 @@ import tensorflow as tf
 from tensorflow.keras import layers, models
 from dbnomics import fetch_series
 import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
 import yfinance as yf
 import pandas as pd
 
@@ -24,31 +25,23 @@ def fetch_macro(series_id: str, value_col: str ="value") -> pd.Series:
     df["period"] = pd.to_datetime(df["period"])         # convert string -> datetime
     df = df.dropna(subset=[value_col])                  # drop missing values
     df = df.sort_values("period").set_index("period")   # sort, then set datetime as index
-    return df[value_col].rename(series_id)              # return as series named by id
+    return df[value_col].rename(series_id)              # return as series named by id (like a hash map)
 
 
-def make_real_series(ticker, start, end, price_col):
-    """
-    Downloads real market data and returns:
-      - series: (T, 2) numpy array with [price, volume]
-      - prices: (T,) numpy array
-      - vol:    (T,) numpy array
-    This matches the shape your synthetic code expects.
-    """
-
+def fetch_stock_data(ticker, start, end, price_col):
     # download OHLCV from Yahoo Finance
-    px = yf.download(
-        ticker,                 # which stock
+    px = yf.download(            # returns a dataframe
+        ticker,                  # which stock
         start=start,             # start date (inclusive)
         end=end,                 # end date (exclusive)
         auto_adjust=False,       # keep Adj Close column
         progress=False
     )
     # fixes keyerror
-    px.columns = px.columns.get_level_values(0)
+    px.columns = px.columns.get_level_values(0) # eliminates unnecessary columns (ex. 'aapl')
 
-    # keep only what we need, and drop any missing rows
-    px = px[[price_col, "Volume"]].dropna()
+    # keep only what we need and drop any missing rows
+    px = px[[price_col, "Volume"]].dropna()     # keeps only adj close and volume
 
     # extract 1D arrays (T,), squeeze() forces arrays to be 1D
     prices = px[price_col].to_numpy(dtype=float).squeeze()
@@ -66,9 +59,11 @@ def build_window_dataset(series_norm, lookback=300):
     T_long, F = series_norm.shape   #t_long = # of rows, and F=number of columns
     N = T_long - lookback           # number of rows (excludes x rows, where x is the lookback length)
 
+    # this loop starts at 0, then goes to 1, 2, 3... looking (lookback) places forward
     X = np.stack([series_norm[i:i + lookback] for i in range(N)], axis=0)
     y = X[:, -1, 0]    # last (normalized) price in each window
     return X, y
+    # x is the whole (lookback) day window of all features, and Y is JUST the last day of that window
 
 
 def build_lstm_model(lookback, num_features):
@@ -82,6 +77,7 @@ def build_lstm_model(lookback, num_features):
     # configure how the model will be trained (optimizer + loss)
     model.compile(optimizer="adam", loss="mse")
     return model
+    # only handles data once model.fit(x_train, y_train) is called
 
 
 # ---------- WindowSHAP wrapper ----------
@@ -118,19 +114,26 @@ def run_windowshap(model, X_train, X_test,
 
 # ---------- plotting helpers ----------
 
-def plot_price_volume(prices, vol, max_steps=500):
-    # make a simple timeline 0..max_steps-1 for plotting
-    t = np.arange(max_steps)
-    # 2 rows, 1 column of subplots: top = price, bottom = volume
+def plot_price_volume(dates, prices, vol, max_steps=500):
+    dates = dates[:max_steps]
+
     fig, axs = plt.subplots(2, 1, sharex=True, figsize=(10, 6))
-    axs[0].plot(t, prices[:max_steps])
+    axs[0].plot(dates, prices[:max_steps])
     axs[0].set_ylabel("Price")
-    axs[0].set_title("Real Price and Volume (first 500 steps)")
-    axs[1].plot(t, vol[:max_steps])
+    axs[0].set_title("Real Price and Volume")
+
+    axs[1].plot(dates, vol[:max_steps])
     axs[1].set_ylabel("Volume")
-    axs[1].set_xlabel("Time step")
+    axs[1].set_xlabel("Year")
+
+    # show years on the x-axis
+    axs[1].xaxis.set_major_locator(mdates.YearLocator())
+    axs[1].xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
+    fig.autofmt_xdate()
+
     plt.tight_layout()
     plt.show()
+
 
 
 def plot_price_predictions(true_last_prices, pred_last_prices, max_plot=200):
@@ -167,7 +170,7 @@ def main():
     print(">>> starting main()")
 
     # 1) make long REAL series (price + volume)
-    stock_df, series, prices, vol = make_real_series(
+    stock_df, series, prices, vol = fetch_stock_data(
         ticker="AAPL",
         start="2015-01-01",
         end="2026-01-01",
@@ -188,29 +191,56 @@ def main():
     # us treasury constant maturity (nominal) yield
     # 2 year maturity, business-day freq.
 
-
+    # pull interest rate macros
     tcmnom_3m = fetch_macro(series_id_1)
     tcmnom_1y = fetch_macro(series_id_2)
     tcmnom_2y = fetch_macro(series_id_3)
 
+
+    # pull CPI levels (monthly index values)
+    cpi_headline = fetch_macro("BLS/cu/CUSR0000SA0")
+    cpi_core     = fetch_macro("BLS/cu/CUSR0000SA0L1E")
+
+    # fetch unemployment rate
+    unrate_u3 = fetch_macro("BLS/ln/LNS14000000").rename("unrate_u3")
+
+    # convert CPI levels to inflation ratews (YoY %)
+    infl = pd.DataFrame({
+        "infl_cpi_yoy": cpi_headline.pct_change(12) * 100,
+        "infl_core_yoy": cpi_core.pct_change(12) * 100
+    }).shift(1)
+
     # ------------------------------------------------------------
 
-    # join macro data onto the stock DataFrame
+    # join macro interest rate data onto the stock DataFrame
     #   'how="left"' ensures we keep the stock market's daily index (trading days)
     df_merged = stock_df.join([tcmnom_3m, tcmnom_1y, tcmnom_2y], how="left")
 
+    # join macro interest rate data onto the stock DataFrame
+    df_merged = stock_df.join([tcmnom_3m, tcmnom_1y, tcmnom_2y], how="left")
 
-    # forward fill (ffill)
-    #   If stock data exists for Tuesday, but the macro number came out Monday,
-    #   this propagates Monday's macro value to Tuesday
-    df_merged = df_merged.ffill()
+    # PASTE THE NEW BLOCK STARTING HERE
+    df_merged = df_merged.join(unrate_u3, how="left")
 
-    # drop remaining NaNs
-    #   (ex. if stock data starts before the first macro data point)
-    df_merged = df_merged.dropna()
+    infl_daily = infl.reindex(df_merged.index).ffill()
+    df_merged = df_merged.join(infl_daily, how="left")
 
-    print("\nAligned Data Head:\n", df_merged.head())
-    print("\nAligned Data Shape:", df_merged.shape)
+    df_merged = df_merged.ffill().dropna()
+
+    pretty = df_merged.rename(columns={
+        series_id_1: "rate_3m",
+        series_id_2: "rate_1y",
+        series_id_3: "rate_2y",
+    })
+
+    cols_to_show = [
+        "Adj Close", "Volume",
+        "rate_3m", "rate_1y", "rate_2y",
+        "infl_cpi_yoy", "infl_core_yoy",
+        "unrate_u3"
+    ]
+
+    print(pretty[cols_to_show].tail(10).to_string())
 
     # ------------------------------------------------------------
     # RE-EXTRACT NUMPY ARRAYS FROM MERGED DATA
@@ -244,25 +274,28 @@ def main():
     )
 
     # plot raw (unnormalized) price/volume just to see the synthetic data
-    plot_price_volume(prices, vol, max_steps=500)
+    plot_price_volume(stock_df.index, prices, vol, max_steps=500)
 
-    # 2) window dataset (normalized) with 300-step windows
+    # window dataset (normalized) with 300-step windows
     lookback = 300
     X, y = build_window_dataset(series_norm, lookback=lookback)
     print("X shape:", X.shape)   # (N, 300, 2) = (num_windows, timesteps, features)
     print("y shape:", y.shape)   # (N,) = last normalized price per window
 
-    # 3) train/test split (respect time order: earliest -> train, latest -> test)
+    # train/test split (respect time order: earliest -> train, latest -> test)
     N = X.shape[0]
     split_idx = int(0.8 * N)               # 80% train, 20% test
     X_train, X_test = X[:split_idx], X[split_idx:]
     y_train, y_test = y[:split_idx], y[split_idx:]
 
-    # 4) build + train LSTM on (window -> last price) mapping
+    """
+    this builds the lstm model and makes predictions
+    
+    # build + train LSTM on (window -> last price) mapping
     model = build_lstm_model(lookback=lookback, num_features=X.shape[2])
     model.fit(X_train, y_train, epochs=10, batch_size=64, verbose=1)
 
-    # 5) predictions (unnormalized last prices)
+    # predictions (unnormalized last prices)
     test_loss = model.evaluate(X_test, y_test, verbose=0)
     print("Test MSE loss (on normalized prices):", test_loss)
 
@@ -275,6 +308,8 @@ def main():
 
     # plot true vs predicted last prices for a slice of the test windows
     plot_price_predictions(true_last_prices, pred_last_prices, max_plot=200)
+    """
+
 
     """
     # 6) WindowSHAP: explain which timesteps/features matter for a few test windows
