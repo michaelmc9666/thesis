@@ -1,0 +1,256 @@
+AAPL  LSTM                  lb= 300  lam=0.0000  MSE=0.000525  dir=51.20%  MAE=$4.55  MAPE=2.18%
+AAPL  Vanilla TCN           lb= 300  lam=0.0000  MSE=0.001410  dir=54.34%  MAE=$10.59  MAPE=4.86%
+AAPL  Static Gate           lb= 300  lam=0.0000  MSE=0.000942  dir=54.34%  MAE=$11.66  MAPE=5.35%
+AAPL  Dynamic Gate          lb= 300  lam=0.0000  MSE=0.000524  dir=49.72%  MAE=$3.88  MAPE=1.83%
+AAPL  Static Gate           lb= 300  lam=0.0010  MSE=0.000800  dir=54.34%  MAE=$10.66  MAPE=4.89%
+AAPL  Dynamic Gate          lb= 300  lam=0.0010  MSE=0.000394  dir=54.53%  MAE=$3.52  MAPE=1.65%
+AAPL  Static Gate           lb= 300  lam=0.0001  MSE=0.000921  dir=54.34%  MAE=$11.43  MAPE=5.24%
+AAPL  Dynamic Gate          lb= 300  lam=0.0001  MSE=0.000454  dir=49.91%  MAE=$4.70  MAPE=2.18%
+AAPL  LSTM                  lb= 600  lam=0.0000  MSE=0.000565  dir=53.05%  MAE=$4.36  MAPE=2.11%
+AAPL  Vanilla TCN           lb= 600  lam=0.0000  MSE=0.000717  dir=54.34%  MAE=$7.14  MAPE=3.16%
+AAPL  Static Gate           lb= 600  lam=0.0000  MSE=0.000567  dir=54.71%  MAE=$5.53  MAPE=2.44%
+AAPL  Dynamic Gate          lb= 600  lam=0.0000  MSE=0.000824  dir=53.60%  MAE=$21.20  MAPE=9.85%
+AAPL  Static Gate           lb= 600  lam=0.0010  MSE=0.000604  dir=56.38%  MAE=$5.31  MAPE=2.34%
+AAPL  Dynamic Gate          lb= 600  lam=0.0010  MSE=0.000496  dir=54.53%  MAE=$14.19  MAPE=6.63%
+AAPL  Static Gate           lb= 600  lam=0.0001  MSE=0.000588  dir=55.64%  MAE=$5.70  MAPE=2.51%
+AAPL  Dynamic Gate          lb= 600  lam=0.0001  MSE=0.000824  dir=54.71%  MAE=$13.99  MAPE=6.65%
+AAPL  LSTM                  lb= 900  lam=0.0000  MSE=0.000632  dir=51.94%  MAE=$5.38  MAPE=2.61%
+AAPL  Vanilla TCN           lb= 900  lam=0.0000  MSE=0.000303  dir=54.34%  MAE=$3.39  MAPE=1.57%
+AAPL  Static Gate           lb= 900  lam=0.0000  MSE=0.000291  dir=52.50%  MAE=$2.63  MAPE=1.23%
+AAPL  Dynamic Gate          lb= 900  lam=0.0000  MSE=0.002051  dir=46.77%  MAE=$9.04  MAPE=4.09%
+AAPL  Static Gate           lb= 900  lam=0.0010  MSE=0.000294  dir=51.94%  MAE=$2.68  MAPE=1.25%
+AAPL  Dynamic Gate          lb= 900  lam=0.0010  MSE=0.001521  dir=45.47%  MAE=$23.56  MAPE=10.32%
+AAPL  Static Gate           lb= 900  lam=0.0001  MSE=0.000294  dir=51.94%  MAE=$2.60  MAPE=1.22%
+AAPL  Dynamic Gate          lb= 900  lam=0.0001  MSE=0.002036  dir=46.40%  MAE=$10.38  MAPE=4.69%
+AAPL  LSTM                  lb=1200  lam=0.0000  MSE=0.000798  dir=48.43%  MAE=$6.59  MAPE=3.12%
+AAPL  Vanilla TCN           lb=1200  lam=0.0000  MSE=0.000316  dir=49.54%  MAE=$2.71  MAPE=1.28%
+AAPL  Static Gate           lb=1200  lam=0.0000  MSE=0.000315  dir=48.06%  MAE=$2.86  MAPE=1.35%
+AAPL  Dynamic Gate          lb=1200  lam=0.0000  MSE=0.001077  dir=49.35%  MAE=$7.42  MAPE=3.32%
+AAPL  Static Gate           lb=1200  lam=0.0010  MSE=0.000308  dir=48.98%  MAE=$2.72  MAPE=1.28%
+AAPL  Dynamic Gate          lb=1200  lam=0.0010  MSE=0.001017  dir=45.66%  MAE=$14.35  MAPE=6.16%
+AAPL  Static Gate           lb=1200  lam=0.0001  MSE=0.000314  dir=48.61%  MAE=$2.80  MAPE=1.32%
+AAPL  Dynamic Gate          lb=1200  lam=0.0001  MSE=0.001079  dir=48.61%  MAE=$8.40  MAPE=3.73%
+AMZN  LSTM                  lb= 300  lam=0.0000  MSE=0.000675  dir=51.57%  MAE=$4.67  MAPE=2.44%
+AMZN  Vanilla TCN           lb= 300  lam=0.0000  MSE=0.000619  dir=52.87%  MAE=$5.49  MAPE=2.77%
+AMZN  Static Gate           lb= 300  lam=0.0000  MSE=0.000737  dir=52.68%  MAE=$5.85  MAPE=2.93%
+AMZN  Dynamic Gate          lb= 300  lam=0.0000  MSE=0.000540  dir=48.80%  MAE=$5.81  MAPE=2.88%
+AMZN  Static Gate           lb= 300  lam=0.0010  MSE=0.000656  dir=53.60%  MAE=$5.43  MAPE=2.67%
+AMZN  Dynamic Gate          lb= 300  lam=0.0010  MSE=0.000518  dir=48.43%  MAE=$5.69  MAPE=2.95%
+AMZN  Static Gate           lb= 300  lam=0.0001  MSE=0.000721  dir=52.13%  MAE=$5.53  MAPE=2.76%
+AMZN  Dynamic Gate          lb= 300  lam=0.0001  MSE=0.000537  dir=48.98%  MAE=$5.47  MAPE=2.72%
+AMZN  LSTM                  lb= 600  lam=0.0000  MSE=0.000683  dir=51.02%  MAE=$4.25  MAPE=2.21%
+AMZN  Vanilla TCN           lb= 600  lam=0.0000  MSE=0.000524  dir=50.09%  MAE=$3.79  MAPE=1.91%
+AMZN  Static Gate           lb= 600  lam=0.0000  MSE=0.000511  dir=50.28%  MAE=$3.71  MAPE=1.86%
+AMZN  Dynamic Gate          lb= 600  lam=0.0000  MSE=0.005217  dir=53.05%  MAE=$15.14  MAPE=7.79%
+AMZN  Static Gate           lb= 600  lam=0.0010  MSE=0.000518  dir=50.83%  MAE=$3.82  MAPE=1.89%
+AMZN  Dynamic Gate          lb= 600  lam=0.0010  MSE=0.000814  dir=49.72%  MAE=$7.79  MAPE=3.82%
+AMZN  Static Gate           lb= 600  lam=0.0001  MSE=0.000521  dir=50.65%  MAE=$3.76  MAPE=1.89%
+AMZN  Dynamic Gate          lb= 600  lam=0.0001  MSE=0.004910  dir=53.05%  MAE=$13.92  MAPE=7.15%
+AMZN  LSTM                  lb= 900  lam=0.0000  MSE=0.000728  dir=50.83%  MAE=$5.16  MAPE=2.69%
+AMZN  Vanilla TCN           lb= 900  lam=0.0000  MSE=0.000374  dir=52.68%  MAE=$3.37  MAPE=1.74%
+AMZN  Static Gate           lb= 900  lam=0.0000  MSE=0.000373  dir=52.68%  MAE=$3.26  MAPE=1.65%
+AMZN  Dynamic Gate          lb= 900  lam=0.0000  MSE=0.000693  dir=53.79%  MAE=$15.21  MAPE=7.32%
+AMZN  Static Gate           lb= 900  lam=0.0010  MSE=0.000375  dir=53.79%  MAE=$2.80  MAPE=1.41%
+AMZN  Dynamic Gate          lb= 900  lam=0.0010  MSE=0.001265  dir=49.35%  MAE=$20.52  MAPE=9.62%
+AMZN  Static Gate           lb= 900  lam=0.0001  MSE=0.000372  dir=52.68%  MAE=$3.24  MAPE=1.64%
+AMZN  Dynamic Gate          lb= 900  lam=0.0001  MSE=0.000682  dir=53.05%  MAE=$15.48  MAPE=7.45%
+AMZN  LSTM                  lb=1200  lam=0.0000  MSE=0.000810  dir=52.13%  MAE=$5.22  MAPE=2.71%
+AMZN  Vanilla TCN           lb=1200  lam=0.0000  MSE=0.000464  dir=52.68%  MAE=$5.57  MAPE=2.73%
+AMZN  Static Gate           lb=1200  lam=0.0000  MSE=0.000413  dir=52.50%  MAE=$3.11  MAPE=1.56%
+AMZN  Dynamic Gate          lb=1200  lam=0.0000  MSE=0.001153  dir=53.79%  MAE=$19.63  MAPE=9.60%
+AMZN  Static Gate           lb=1200  lam=0.0010  MSE=0.000424  dir=51.76%  MAE=$3.07  MAPE=1.54%
+AMZN  Dynamic Gate          lb=1200  lam=0.0010  MSE=0.001157  dir=51.76%  MAE=$14.89  MAPE=7.32%
+AMZN  Static Gate           lb=1200  lam=0.0001  MSE=0.000417  dir=52.31%  MAE=$3.16  MAPE=1.58%
+AMZN  Dynamic Gate          lb=1200  lam=0.0001  MSE=0.001153  dir=54.16%  MAE=$19.53  MAPE=9.54%
+JPM  LSTM                  lb= 300  lam=0.0000  MSE=0.000279  dir=45.29%  MAE=$3.65  MAPE=1.58%
+JPM  Vanilla TCN           lb= 300  lam=0.0000  MSE=0.000302  dir=47.50%  MAE=$3.39  MAPE=1.38%
+JPM  Static Gate           lb= 300  lam=0.0000  MSE=0.000262  dir=43.62%  MAE=$5.65  MAPE=2.47%
+JPM  Dynamic Gate          lb= 300  lam=0.0000  MSE=0.000584  dir=41.59%  MAE=$9.71  MAPE=4.10%
+JPM  Static Gate           lb= 300  lam=0.0010  MSE=0.000261  dir=41.40%  MAE=$5.66  MAPE=2.51%
+JPM  Dynamic Gate          lb= 300  lam=0.0010  MSE=0.000308  dir=50.09%  MAE=$3.32  MAPE=1.43%
+JPM  Static Gate           lb= 300  lam=0.0001  MSE=0.000261  dir=42.33%  MAE=$5.64  MAPE=2.48%
+JPM  Dynamic Gate          lb= 300  lam=0.0001  MSE=0.000623  dir=41.96%  MAE=$9.38  MAPE=3.96%
+JPM  LSTM                  lb= 600  lam=0.0000  MSE=0.000293  dir=45.29%  MAE=$3.75  MAPE=1.61%
+JPM  Vanilla TCN           lb= 600  lam=0.0000  MSE=0.000255  dir=53.05%  MAE=$3.13  MAPE=1.35%
+JPM  Static Gate           lb= 600  lam=0.0000  MSE=0.000233  dir=45.66%  MAE=$2.66  MAPE=1.16%
+JPM  Dynamic Gate          lb= 600  lam=0.0000  MSE=0.004499  dir=57.30%  MAE=$18.67  MAPE=7.80%
+JPM  Static Gate           lb= 600  lam=0.0010  MSE=0.000228  dir=41.59%  MAE=$2.80  MAPE=1.22%
+JPM  Dynamic Gate          lb= 600  lam=0.0010  MSE=0.000450  dir=53.42%  MAE=$4.14  MAPE=1.74%
+JPM  Static Gate           lb= 600  lam=0.0001  MSE=0.000234  dir=46.58%  MAE=$2.62  MAPE=1.15%
+JPM  Dynamic Gate          lb= 600  lam=0.0001  MSE=0.003311  dir=57.49%  MAE=$14.34  MAPE=6.16%
+JPM  LSTM                  lb= 900  lam=0.0000  MSE=0.000326  dir=46.95%  MAE=$3.83  MAPE=1.67%
+JPM  Vanilla TCN           lb= 900  lam=0.0000  MSE=0.000296  dir=51.94%  MAE=$3.74  MAPE=1.57%
+JPM  Static Gate           lb= 900  lam=0.0000  MSE=0.000248  dir=48.24%  MAE=$4.67  MAPE=1.86%
+JPM  Dynamic Gate          lb= 900  lam=0.0000  MSE=0.002296  dir=42.70%  MAE=$13.92  MAPE=6.00%
+JPM  Static Gate           lb= 900  lam=0.0010  MSE=0.000253  dir=47.13%  MAE=$5.37  MAPE=2.12%
+JPM  Dynamic Gate          lb= 900  lam=0.0010  MSE=0.001704  dir=48.24%  MAE=$10.86  MAPE=4.37%
+JPM  Static Gate           lb= 900  lam=0.0001  MSE=0.000252  dir=47.87%  MAE=$4.77  MAPE=1.90%
+JPM  Dynamic Gate          lb= 900  lam=0.0001  MSE=0.002322  dir=41.40%  MAE=$13.61  MAPE=5.87%
+JPM  LSTM                  lb=1200  lam=0.0000  MSE=0.000386  dir=45.29%  MAE=$4.31  MAPE=1.89%
+JPM  Vanilla TCN           lb=1200  lam=0.0000  MSE=0.000307  dir=58.41%  MAE=$4.11  MAPE=1.83%
+JPM  Static Gate           lb=1200  lam=0.0000  MSE=0.000267  dir=54.90%  MAE=$3.33  MAPE=1.48%
+JPM  Dynamic Gate          lb=1200  lam=0.0000  MSE=0.000898  dir=45.66%  MAE=$8.78  MAPE=3.59%
+JPM  Static Gate           lb=1200  lam=0.0010  MSE=0.000282  dir=52.87%  MAE=$3.45  MAPE=1.48%
+JPM  Dynamic Gate          lb=1200  lam=0.0010  MSE=0.000895  dir=43.62%  MAE=$13.18  MAPE=5.05%
+JPM  Static Gate           lb=1200  lam=0.0001  MSE=0.000277  dir=54.34%  MAE=$3.39  MAPE=1.49%
+JPM  Dynamic Gate          lb=1200  lam=0.0001  MSE=0.000897  dir=47.32%  MAE=$9.22  MAPE=3.75%
+XOM  LSTM                  lb= 300  lam=0.0000  MSE=0.000257  dir=45.84%  MAE=$1.77  MAPE=1.64%
+XOM  Vanilla TCN           lb= 300  lam=0.0000  MSE=0.000408  dir=51.20%  MAE=$2.06  MAPE=1.94%
+XOM  Static Gate           lb= 300  lam=0.0000  MSE=0.000253  dir=53.60%  MAE=$1.63  MAPE=1.56%
+XOM  Dynamic Gate          lb= 300  lam=0.0000  MSE=0.000696  dir=46.95%  MAE=$3.56  MAPE=3.29%
+XOM  Static Gate           lb= 300  lam=0.0010  MSE=0.000240  dir=51.94%  MAE=$2.17  MAPE=2.08%
+XOM  Dynamic Gate          lb= 300  lam=0.0010  MSE=0.000229  dir=45.84%  MAE=$1.80  MAPE=1.67%
+XOM  Static Gate           lb= 300  lam=0.0001  MSE=0.000245  dir=51.57%  MAE=$1.63  MAPE=1.56%
+XOM  Dynamic Gate          lb= 300  lam=0.0001  MSE=0.000696  dir=44.92%  MAE=$2.63  MAPE=2.45%
+XOM  LSTM                  lb= 600  lam=0.0000  MSE=0.000272  dir=48.24%  MAE=$2.20  MAPE=2.02%
+XOM  Vanilla TCN           lb= 600  lam=0.0000  MSE=0.000196  dir=50.65%  MAE=$1.25  MAPE=1.17%
+XOM  Static Gate           lb= 600  lam=0.0000  MSE=0.000202  dir=47.50%  MAE=$1.65  MAPE=1.54%
+XOM  Dynamic Gate          lb= 600  lam=0.0000  MSE=0.000328  dir=52.50%  MAE=$2.45  MAPE=2.28%
+XOM  Static Gate           lb= 600  lam=0.0010  MSE=0.000196  dir=47.50%  MAE=$2.99  MAPE=2.78%
+XOM  Dynamic Gate          lb= 600  lam=0.0010  MSE=0.000346  dir=49.54%  MAE=$1.73  MAPE=1.62%
+XOM  Static Gate           lb= 600  lam=0.0001  MSE=0.000196  dir=47.50%  MAE=$1.88  MAPE=1.75%
+XOM  Dynamic Gate          lb= 600  lam=0.0001  MSE=0.000334  dir=50.28%  MAE=$2.13  MAPE=2.00%
+XOM  LSTM                  lb= 900  lam=0.0000  MSE=0.000287  dir=48.43%  MAE=$1.91  MAPE=1.77%
+XOM  Vanilla TCN           lb= 900  lam=0.0000  MSE=0.000195  dir=47.50%  MAE=$2.03  MAPE=1.88%
+XOM  Static Gate           lb= 900  lam=0.0000  MSE=0.000198  dir=47.50%  MAE=$2.21  MAPE=2.04%
+XOM  Dynamic Gate          lb= 900  lam=0.0000  MSE=0.006701  dir=47.50%  MAE=$13.60  MAPE=12.57%
+XOM  Static Gate           lb= 900  lam=0.0010  MSE=0.000222  dir=47.50%  MAE=$3.08  MAPE=2.84%
+XOM  Dynamic Gate          lb= 900  lam=0.0010  MSE=0.006792  dir=47.87%  MAE=$11.05  MAPE=10.21%
+XOM  Static Gate           lb= 900  lam=0.0001  MSE=0.000201  dir=47.50%  MAE=$2.37  MAPE=2.19%
+XOM  Dynamic Gate          lb= 900  lam=0.0001  MSE=0.006725  dir=47.50%  MAE=$12.19  MAPE=11.26%
+XOM  LSTM                  lb=1200  lam=0.0000  MSE=0.000400  dir=48.24%  MAE=$2.14  MAPE=1.98%
+XOM  Vanilla TCN           lb=1200  lam=0.0000  MSE=0.000276  dir=46.77%  MAE=$1.79  MAPE=1.67%
+XOM  Static Gate           lb=1200  lam=0.0000  MSE=0.000322  dir=48.06%  MAE=$2.54  MAPE=2.34%
+XOM  Dynamic Gate          lb=1200  lam=0.0000  MSE=0.001246  dir=50.65%  MAE=$5.34  MAPE=5.00%
+XOM  Static Gate           lb=1200  lam=0.0010  MSE=0.000322  dir=47.13%  MAE=$2.91  MAPE=2.68%
+XOM  Dynamic Gate          lb=1200  lam=0.0010  MSE=0.001247  dir=46.95%  MAE=$8.87  MAPE=8.08%
+XOM  Static Gate           lb=1200  lam=0.0001  MSE=0.000321  dir=48.98%  MAE=$2.61  MAPE=2.41%
+XOM  Dynamic Gate          lb=1200  lam=0.0001  MSE=0.001249  dir=50.46%  MAE=$5.60  MAPE=5.24%
+NEE  LSTM                  lb= 300  lam=0.0000  MSE=0.000393  dir=46.77%  MAE=$1.64  MAPE=2.35%
+NEE  Vanilla TCN           lb= 300  lam=0.0000  MSE=0.001793  dir=51.57%  MAE=$3.13  MAPE=4.49%
+NEE  Static Gate           lb= 300  lam=0.0000  MSE=0.001034  dir=53.23%  MAE=$2.36  MAPE=3.40%
+NEE  Dynamic Gate          lb= 300  lam=0.0000  MSE=0.001389  dir=45.66%  MAE=$1.93  MAPE=2.89%
+NEE  Static Gate           lb= 300  lam=0.0010  MSE=0.000481  dir=49.54%  MAE=$1.25  MAPE=1.81%
+NEE  Dynamic Gate          lb= 300  lam=0.0010  MSE=0.000422  dir=46.03%  MAE=$1.32  MAPE=1.90%
+NEE  Static Gate           lb= 300  lam=0.0001  MSE=0.000996  dir=53.42%  MAE=$2.34  MAPE=3.36%
+NEE  Dynamic Gate          lb= 300  lam=0.0001  MSE=0.000937  dir=44.55%  MAE=$1.71  MAPE=2.48%
+NEE  LSTM                  lb= 600  lam=0.0000  MSE=0.000405  dir=48.06%  MAE=$1.50  MAPE=2.14%
+NEE  Vanilla TCN           lb= 600  lam=0.0000  MSE=0.000351  dir=48.61%  MAE=$0.97  MAPE=1.42%
+NEE  Static Gate           lb= 600  lam=0.0000  MSE=0.000323  dir=46.21%  MAE=$1.15  MAPE=1.66%
+NEE  Dynamic Gate          lb= 600  lam=0.0000  MSE=0.007149  dir=53.42%  MAE=$10.28  MAPE=14.27%
+NEE  Static Gate           lb= 600  lam=0.0010  MSE=0.000318  dir=47.87%  MAE=$1.04  MAPE=1.53%
+NEE  Dynamic Gate          lb= 600  lam=0.0010  MSE=0.000451  dir=50.83%  MAE=$1.99  MAPE=2.78%
+NEE  Static Gate           lb= 600  lam=0.0001  MSE=0.000322  dir=46.77%  MAE=$1.08  MAPE=1.56%
+NEE  Dynamic Gate          lb= 600  lam=0.0001  MSE=0.006361  dir=53.42%  MAE=$7.82  MAPE=10.88%
+NEE  LSTM                  lb= 900  lam=0.0000  MSE=0.000436  dir=48.06%  MAE=$1.70  MAPE=2.40%
+NEE  Vanilla TCN           lb= 900  lam=0.0000  MSE=0.000403  dir=51.94%  MAE=$1.22  MAPE=1.78%
+NEE  Static Gate           lb= 900  lam=0.0000  MSE=0.000405  dir=51.94%  MAE=$1.17  MAPE=1.72%
+NEE  Dynamic Gate          lb= 900  lam=0.0000  MSE=0.001871  dir=47.50%  MAE=$2.85  MAPE=4.27%
+NEE  Static Gate           lb= 900  lam=0.0010  MSE=0.000361  dir=48.80%  MAE=$1.29  MAPE=1.83%
+NEE  Dynamic Gate          lb= 900  lam=0.0010  MSE=0.003167  dir=46.03%  MAE=$7.73  MAPE=11.01%
+NEE  Static Gate           lb= 900  lam=0.0001  MSE=0.000415  dir=52.13%  MAE=$1.16  MAPE=1.71%
+NEE  Dynamic Gate          lb= 900  lam=0.0001  MSE=0.001757  dir=45.84%  MAE=$2.85  MAPE=4.22%
+NEE  LSTM                  lb=1200  lam=0.0000  MSE=0.000554  dir=47.50%  MAE=$1.45  MAPE=2.09%
+NEE  Vanilla TCN           lb=1200  lam=0.0000  MSE=0.000668  dir=53.42%  MAE=$2.72  MAPE=3.89%
+NEE  Static Gate           lb=1200  lam=0.0000  MSE=0.000345  dir=51.39%  MAE=$1.16  MAPE=1.74%
+NEE  Dynamic Gate          lb=1200  lam=0.0000  MSE=0.000775  dir=45.84%  MAE=$2.05  MAPE=2.93%
+NEE  Static Gate           lb=1200  lam=0.0010  MSE=0.000334  dir=51.20%  MAE=$1.12  MAPE=1.68%
+NEE  Dynamic Gate          lb=1200  lam=0.0010  MSE=0.000802  dir=49.72%  MAE=$3.43  MAPE=4.87%
+NEE  Static Gate           lb=1200  lam=0.0001  MSE=0.000345  dir=51.94%  MAE=$1.18  MAPE=1.77%
+NEE  Dynamic Gate          lb=1200  lam=0.0001  MSE=0.000785  dir=47.32%  MAE=$1.91  MAPE=2.73%
+GILD  LSTM                  lb= 300  lam=0.0000  MSE=0.000468  dir=48.80%  MAE=$1.94  MAPE=2.09%
+GILD  Vanilla TCN           lb= 300  lam=0.0000  MSE=0.000411  dir=53.97%  MAE=$2.44  MAPE=2.76%
+GILD  Static Gate           lb= 300  lam=0.0000  MSE=0.000337  dir=52.87%  MAE=$1.26  MAPE=1.46%
+GILD  Dynamic Gate          lb= 300  lam=0.0000  MSE=0.000628  dir=51.57%  MAE=$2.15  MAPE=2.30%
+GILD  Static Gate           lb= 300  lam=0.0010  MSE=0.000335  dir=42.88%  MAE=$1.70  MAPE=1.80%
+GILD  Dynamic Gate          lb= 300  lam=0.0010  MSE=0.000437  dir=44.36%  MAE=$2.94  MAPE=3.00%
+GILD  Static Gate           lb= 300  lam=0.0001  MSE=0.000341  dir=47.50%  MAE=$1.26  MAPE=1.43%
+GILD  Dynamic Gate          lb= 300  lam=0.0001  MSE=0.000472  dir=52.13%  MAE=$1.64  MAPE=1.87%
+GILD  LSTM                  lb= 600  lam=0.0000  MSE=0.000482  dir=49.35%  MAE=$2.14  MAPE=2.32%
+GILD  Vanilla TCN           lb= 600  lam=0.0000  MSE=0.000300  dir=46.77%  MAE=$1.16  MAPE=1.27%
+GILD  Static Gate           lb= 600  lam=0.0000  MSE=0.000291  dir=45.47%  MAE=$1.74  MAPE=1.87%
+GILD  Dynamic Gate          lb= 600  lam=0.0000  MSE=0.006639  dir=53.97%  MAE=$7.66  MAPE=8.05%
+GILD  Static Gate           lb= 600  lam=0.0010  MSE=0.000288  dir=45.47%  MAE=$1.75  MAPE=1.92%
+GILD  Dynamic Gate          lb= 600  lam=0.0010  MSE=0.000323  dir=50.28%  MAE=$5.00  MAPE=4.91%
+GILD  Static Gate           lb= 600  lam=0.0001  MSE=0.000292  dir=45.47%  MAE=$1.79  MAPE=1.93%
+GILD  Dynamic Gate          lb= 600  lam=0.0001  MSE=0.003917  dir=53.60%  MAE=$5.86  MAPE=6.21%
+GILD  LSTM                  lb= 900  lam=0.0000  MSE=0.000598  dir=52.13%  MAE=$2.01  MAPE=2.21%
+GILD  Vanilla TCN           lb= 900  lam=0.0000  MSE=0.000289  dir=53.97%  MAE=$1.56  MAPE=1.78%
+GILD  Static Gate           lb= 900  lam=0.0000  MSE=0.000305  dir=53.97%  MAE=$1.67  MAPE=1.95%
+GILD  Dynamic Gate          lb= 900  lam=0.0000  MSE=0.001170  dir=52.50%  MAE=$3.66  MAPE=3.57%
+GILD  Static Gate           lb= 900  lam=0.0010  MSE=0.000304  dir=53.97%  MAE=$1.65  MAPE=1.92%
+GILD  Dynamic Gate          lb= 900  lam=0.0010  MSE=0.001302  dir=48.43%  MAE=$11.13  MAPE=10.32%
+GILD  Static Gate           lb= 900  lam=0.0001  MSE=0.000305  dir=53.97%  MAE=$1.63  MAPE=1.89%
+GILD  Dynamic Gate          lb= 900  lam=0.0001  MSE=0.001213  dir=53.42%  MAE=$3.92  MAPE=3.82%
+GILD  LSTM                  lb=1200  lam=0.0000  MSE=0.000562  dir=55.27%  MAE=$1.96  MAPE=2.17%
+GILD  Vanilla TCN           lb=1200  lam=0.0000  MSE=0.000971  dir=53.97%  MAE=$3.41  MAPE=3.55%
+GILD  Static Gate           lb=1200  lam=0.0000  MSE=0.000365  dir=53.97%  MAE=$1.89  MAPE=2.01%
+GILD  Dynamic Gate          lb=1200  lam=0.0000  MSE=0.000540  dir=54.90%  MAE=$2.31  MAPE=2.48%
+GILD  Static Gate           lb=1200  lam=0.0010  MSE=0.000328  dir=53.97%  MAE=$2.10  MAPE=2.20%
+GILD  Dynamic Gate          lb=1200  lam=0.0010  MSE=0.000792  dir=52.31%  MAE=$8.46  MAPE=7.97%
+GILD  Static Gate           lb=1200  lam=0.0001  MSE=0.000360  dir=53.97%  MAE=$1.84  MAPE=1.95%
+GILD  Dynamic Gate          lb=1200  lam=0.0001  MSE=0.000582  dir=54.16%  MAE=$2.37  MAPE=2.54%
+NVDA  LSTM                  lb= 300  lam=0.0000  MSE=0.001290  dir=49.54%  MAE=$5.47  MAPE=4.30%
+NVDA  Vanilla TCN           lb= 300  lam=0.0000  MSE=0.001085  dir=47.87%  MAE=$3.10  MAPE=2.49%
+NVDA  Static Gate           lb= 300  lam=0.0000  MSE=0.001031  dir=47.13%  MAE=$3.23  MAPE=2.65%
+NVDA  Dynamic Gate          lb= 300  lam=0.0000  MSE=0.003274  dir=48.98%  MAE=$9.07  MAPE=7.14%
+NVDA  Static Gate           lb= 300  lam=0.0010  MSE=0.001029  dir=49.35%  MAE=$3.26  MAPE=2.69%
+NVDA  Dynamic Gate          lb= 300  lam=0.0010  MSE=0.002572  dir=50.65%  MAE=$4.54  MAPE=3.89%
+NVDA  Static Gate           lb= 300  lam=0.0001  MSE=0.001038  dir=47.69%  MAE=$3.20  MAPE=2.63%
+NVDA  Dynamic Gate          lb= 300  lam=0.0001  MSE=0.003262  dir=50.46%  MAE=$8.89  MAPE=7.18%
+NVDA  LSTM                  lb= 600  lam=0.0000  MSE=0.001281  dir=49.54%  MAE=$5.23  MAPE=4.33%
+NVDA  Vanilla TCN           lb= 600  lam=0.0000  MSE=0.001009  dir=55.45%  MAE=$2.97  MAPE=2.45%
+NVDA  Static Gate           lb= 600  lam=0.0000  MSE=0.000989  dir=54.16%  MAE=$2.97  MAPE=2.46%
+NVDA  Dynamic Gate          lb= 600  lam=0.0000  MSE=0.002649  dir=54.90%  MAE=$41.25  MAPE=32.23%
+NVDA  Static Gate           lb= 600  lam=0.0010  MSE=0.000988  dir=54.90%  MAE=$3.16  MAPE=2.59%
+NVDA  Dynamic Gate          lb= 600  lam=0.0010  MSE=0.002632  dir=51.02%  MAE=$32.07  MAPE=28.48%
+NVDA  Static Gate           lb= 600  lam=0.0001  MSE=0.000993  dir=55.08%  MAE=$3.06  MAPE=2.52%
+NVDA  Dynamic Gate          lb= 600  lam=0.0001  MSE=0.002646  dir=54.53%  MAE=$32.43  MAPE=25.66%
+NVDA  LSTM                  lb= 900  lam=0.0000  MSE=0.001381  dir=48.61%  MAE=$4.77  MAPE=4.09%
+NVDA  Vanilla TCN           lb= 900  lam=0.0000  MSE=0.001009  dir=55.08%  MAE=$3.52  MAPE=2.90%
+NVDA  Static Gate           lb= 900  lam=0.0000  MSE=0.000972  dir=55.08%  MAE=$3.86  MAPE=3.12%
+NVDA  Dynamic Gate          lb= 900  lam=0.0000  MSE=0.002077  dir=54.34%  MAE=$22.18  MAPE=15.87%
+NVDA  Static Gate           lb= 900  lam=0.0010  MSE=0.000971  dir=55.08%  MAE=$4.01  MAPE=3.22%
+NVDA  Dynamic Gate          lb= 900  lam=0.0010  MSE=0.002323  dir=49.72%  MAE=$15.87  MAPE=12.33%
+NVDA  Static Gate           lb= 900  lam=0.0001  MSE=0.000972  dir=55.08%  MAE=$4.04  MAPE=3.25%
+NVDA  Dynamic Gate          lb= 900  lam=0.0001  MSE=0.002083  dir=54.71%  MAE=$21.05  MAPE=15.25%
+NVDA  LSTM                  lb=1200  lam=0.0000  MSE=0.001434  dir=53.23%  MAE=$6.44  MAPE=5.48%
+NVDA  Vanilla TCN           lb=1200  lam=0.0000  MSE=0.001205  dir=55.08%  MAE=$6.97  MAPE=5.19%
+NVDA  Static Gate           lb=1200  lam=0.0000  MSE=0.001167  dir=55.08%  MAE=$5.45  MAPE=4.13%
+NVDA  Dynamic Gate          lb=1200  lam=0.0000  MSE=0.002240  dir=51.20%  MAE=$14.54  MAPE=11.94%
+NVDA  Static Gate           lb=1200  lam=0.0010  MSE=0.001098  dir=55.08%  MAE=$4.60  MAPE=3.54%
+NVDA  Dynamic Gate          lb=1200  lam=0.0010  MSE=0.002233  dir=50.83%  MAE=$19.59  MAPE=17.61%
+NVDA  Static Gate           lb=1200  lam=0.0001  MSE=0.001167  dir=55.08%  MAE=$5.37  MAPE=4.08%
+NVDA  Dynamic Gate          lb=1200  lam=0.0001  MSE=0.002238  dir=51.02%  MAE=$13.80  MAPE=11.59%
+LUV  LSTM                  lb= 300  lam=0.0000  MSE=0.000762  dir=51.94%  MAE=$0.80  MAPE=2.67%
+LUV  Vanilla TCN           lb= 300  lam=0.0000  MSE=0.000656  dir=51.57%  MAE=$0.54  MAPE=1.83%
+LUV  Static Gate           lb= 300  lam=0.0000  MSE=0.000680  dir=46.58%  MAE=$0.65  MAPE=2.16%
+LUV  Dynamic Gate          lb= 300  lam=0.0000  MSE=0.001257  dir=52.31%  MAE=$0.92  MAPE=3.10%
+LUV  Static Gate           lb= 300  lam=0.0010  MSE=0.000709  dir=45.66%  MAE=$0.73  MAPE=2.44%
+LUV  Dynamic Gate          lb= 300  lam=0.0010  MSE=0.000943  dir=46.21%  MAE=$0.81  MAPE=2.69%
+LUV  Static Gate           lb= 300  lam=0.0001  MSE=0.000681  dir=45.84%  MAE=$0.67  MAPE=2.24%
+LUV  Dynamic Gate          lb= 300  lam=0.0001  MSE=0.001042  dir=47.69%  MAE=$0.79  MAPE=2.68%
+LUV  LSTM                  lb= 600  lam=0.0000  MSE=0.000777  dir=50.28%  MAE=$0.77  MAPE=2.59%
+LUV  Vanilla TCN           lb= 600  lam=0.0000  MSE=0.000639  dir=52.31%  MAE=$0.55  MAPE=1.85%
+LUV  Static Gate           lb= 600  lam=0.0000  MSE=0.000660  dir=46.03%  MAE=$0.88  MAPE=2.86%
+LUV  Dynamic Gate          lb= 600  lam=0.0000  MSE=0.003976  dir=54.90%  MAE=$4.76  MAPE=15.57%
+LUV  Static Gate           lb= 600  lam=0.0010  MSE=0.000662  dir=46.03%  MAE=$0.91  MAPE=2.96%
+LUV  Dynamic Gate          lb= 600  lam=0.0010  MSE=0.001304  dir=53.60%  MAE=$3.04  MAPE=9.84%
+LUV  Static Gate           lb= 600  lam=0.0001  MSE=0.000661  dir=46.03%  MAE=$0.89  MAPE=2.89%
+LUV  Dynamic Gate          lb= 600  lam=0.0001  MSE=0.004257  dir=55.08%  MAE=$3.82  MAPE=12.47%
+LUV  LSTM                  lb= 900  lam=0.0000  MSE=0.000777  dir=47.87%  MAE=$0.93  MAPE=3.12%
+LUV  Vanilla TCN           lb= 900  lam=0.0000  MSE=0.000916  dir=44.73%  MAE=$1.03  MAPE=3.31%
+LUV  Static Gate           lb= 900  lam=0.0000  MSE=0.000861  dir=44.55%  MAE=$1.22  MAPE=3.94%
+LUV  Dynamic Gate          lb= 900  lam=0.0000  MSE=0.002704  dir=44.55%  MAE=$3.35  MAPE=11.12%
+LUV  Static Gate           lb= 900  lam=0.0010  MSE=0.000859  dir=44.55%  MAE=$1.40  MAPE=4.54%
+LUV  Dynamic Gate          lb= 900  lam=0.0010  MSE=0.002706  dir=45.10%  MAE=$2.73  MAPE=9.06%
+LUV  Static Gate           lb= 900  lam=0.0001  MSE=0.000856  dir=44.55%  MAE=$1.28  MAPE=4.14%
+LUV  Dynamic Gate          lb= 900  lam=0.0001  MSE=0.002699  dir=44.55%  MAE=$3.87  MAPE=12.81%
+LUV  LSTM                  lb=1200  lam=0.0000  MSE=0.000927  dir=49.54%  MAE=$0.89  MAPE=3.05%
+LUV  Vanilla TCN           lb=1200  lam=0.0000  MSE=0.000783  dir=52.13%  MAE=$0.61  MAPE=2.04%
+LUV  Static Gate           lb=1200  lam=0.0000  MSE=0.000672  dir=46.21%  MAE=$0.98  MAPE=3.17%
+LUV  Dynamic Gate          lb=1200  lam=0.0000  MSE=0.001688  dir=55.45%  MAE=$1.16  MAPE=3.90%
+LUV  Static Gate           lb=1200  lam=0.0010  MSE=0.000672  dir=46.03%  MAE=$1.16  MAPE=3.74%
+LUV  Dynamic Gate          lb=1200  lam=0.0010  MSE=0.001509  dir=51.57%  MAE=$1.10  MAPE=3.64%
+LUV  Static Gate           lb=1200  lam=0.0001  MSE=0.000672  dir=45.66%  MAE=$1.03  MAPE=3.32%
+LUV  Dynamic Gate          lb=1200  lam=0.0001  MSE=0.001780  dir=53.97%  MAE=$1.32  MAPE=4.43%
