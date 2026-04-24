@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.idea/
+.vscode/
+.pytest_cache/
+
+# Generated results (not source code)
+results_*.txt
+dashboard_*.html
+
+# Cached data
+data_cache/
+*.csv
+*.xlsx
+
+# OS files
+Thumbs.db
+.DS_Store
